@@ -1,4 +1,5 @@
-use ss_03;
+USE ss_03;
+USE ss3_quanlysinhvien;
 SELECT * FROM student WHERE StudentName LIKE 'h%';
 SELECT * FROM class WHERE month(startDate) = 12;
 SELECT * FROM `subject` WHERE Credit BETWEEN 3 AND 5;
