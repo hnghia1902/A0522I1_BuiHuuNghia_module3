@@ -208,25 +208,111 @@ VALUES(1,'2020-12-08','2020-12-08',0,3,1,3),
 (11,'2021-04-25','2021-04-25',0,2,2,1),
 (12,'2021-05-25','2021-05-27',0,7,10,1);
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 2
 select * from nhan_vien
 where ho_ten like 'T%'or ho_ten like 'H%'or ho_ten like 'K%'and length(ho_ten)<=15;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 3
 select * from khach_hang
 where datediff(curdate(),ngaysinh)<=50*365 and datediff(curdate(),ngaysinh)>=18*365 and dia_chi like '%Đà Nẵng%' or dia_chi like '%Quảng Trị%' ;
 ----------------------------------------------------------------------------------------------------------------------------
-
+-- task 4
+Select hop_dong.ma_Khach_Hang, count(hop_dong.ma_Khach_Hang) as `SoLanDatPhong` from hop_dong
+join khach_hang on khach_hang.ma_Khach_Hang = hop_dong.ma_Khach_Hang
+where khach_hang.ma_Loai_Khach = 1
+group by hop_dong.ma_Khach_Hang
+order by `SoLanDatPhong` desc;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 5
+select kh.ma_khach_hang,kh.hovaten,lk.loai_khach,hd.ma_hop_dong,dv.ten_dich_vu,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,(dv.chi_phi_thue + ifnull(sum(hdct.so_luong*dvdk.gia), 0)) as Tong_Tien
+from khach_hang kh
+left join hop_dong hd on kh.ma_khach_hang=hd.ma_khach_hang
+left join loai_khach lk on kh.ma_loai_khach=lk.ma_loai_khach
+left join dich_vu dv on hd.ma_dich_vu=dv.ma_dich_vu
+left join hop_dong_chi_tiet hdct on hd.ma_hop_dong=hdct.ma_hop_dong
+left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem
+group by hd.ma_hop_dong
+order by kh.ma_khach_hang;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 6
+select dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich, dv.chi_phi_thue, ldv.ten_loai_dich_vu
+from dich_vu dv
+join loai_dich_vu ldv on dv.ma_loai_dich_vu=ldv.ma_loai_dich_vu
+join hop_dong hd on hd.ma_dich_vu=dv.ma_dich_vu
+where dv.ma_dich_vu not in (select hd.ma_dich_vu from hop_dong hd where date(hd.ngay_lam_hop_dong) >='2021-01-01' and date(hd.ngay_lam_hop_dong)  <='2021-04-01')
+group by dv.ma_dich_vu;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 7
+select dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich,dv.so_nguoi_toi_da, dv.chi_phi_thue, ldv.ten_loai_dich_vu
+from dich_vu dv
+join loai_dich_vu ldv on dv.ma_loai_dich_vu=ldv.ma_loai_dich_vu
+join hop_dong hd on hd.ma_dich_vu=dv.ma_dich_vu
+where dv.ma_dich_vu not in (select hd.ma_dich_vu from hop_dong hd where year(hd.ngay_lam_hop_dong) ='2021') and year(hd.ngay_lam_hop_dong)  ='2020'
+group by dv.ma_dich_vu;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 8
+select hovaten from khach_hang union select hovaten from khach_hang; 
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 9
+select month(ngay_lam_hop_dong) as thang,count(ma_khach_hang) as so_luong_khach_hang
+from hop_dong
+where year(ngay_lam_hop_dong)='2021'
+group by thang
+order by thang;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 10
+select hd.ma_hop_dong,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,hd.tien_dat_coc,sum(hdct.so_luong) as so_luong_dich_vu_di_kem
+from dich_vu_di_kem dvdk
+left join hop_dong_chi_tiet hdct on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem
+right join hop_dong hd on hdct.ma_hop_dong =hd.ma_hop_dong
+ group by hd.ma_hop_dong;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 11
+select dvdk.ma_dich_vu_di_kem,dvdk.ten_dich_vu_di_kem
+from dich_vu_di_kem dvdk
+join hop_dong_chi_tiet hdct on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem
+join hop_dong hd on hdct.ma_hop_dong=hd.ma_hop_dong
+join khach_hang kh on hd.ma_khach_hang=kh.ma_khach_hang
+join loai_khach lk on kh.ma_loai_khach=lk.ma_loai_khach
+where lk.loai_khach='Diamond' and kh.dia_chi like '%Vinh%' or kh.dia_chi like '%Quãng Ngãi%';
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 12
+select hd.ma_hop_dong,nv.ho_ten as ho_ten_nhan_vien,kh.hovaten as ho_ten_khach_hang,kh.so_dien_thoai,dv.ma_dich_vu,dv.ten_dich_vu,sum(so_luong)as so_luong_dich_vu_di_kem,hd.tien_dat_coc
+from hop_dong hd
+left join khach_hang kh on hd.ma_khach_hang=kh.ma_khach_hang
+left join nhan_vien nv on nv.ma_nhan_vien=hd.ma_nhan_vien
+left join dich_vu dv on dv.ma_dich_vu=hd.ma_dich_vu
+left join hop_dong_chi_tiet hdct on hdct.ma_hop_dong=hd.ma_hop_dong
+left join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem
+where (date(hd.ngay_lam_hop_dong) >= '2020-10-01' and date(hd.ngay_lam_hop_dong) <= '2020-12-31') and not (date(hd.ngay_lam_hop_dong) >= '2021-01-01' and date(hd.ngay_lam_hop_dong) <= '2021-06-30')
+group by hd.ma_hop_dong;
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 13
+select dvdk.ma_dich_vu_di_kem,dvdk.ten_dich_vu_di_kem,sum(hdct.so_luong)as so_luong_dich_vu_di_kem
+from hop_dong_chi_tiet hdct
+join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem
+group by hdct.ma_dich_vu_di_kem
+having  sum(hdct.so_luong)=(select max(tam.a) from (select  sum(hdct.so_luong)as a from hop_dong_chi_tiet hdct group by hdct.ma_dich_vu_di_kem)as tam);
 ----------------------------------------------------------------------------------------------------------------------------
+-- task 14
+select  hd.ma_hop_dong,ldv.ten_loai_dich_vu,dvdk.ten_dich_vu_di_kem,count(hdct.ma_dich_vu_di_kem) as so_lan_su_dung
+from hop_dong hd
+join dich_vu dv on hd.ma_dich_vu=dv.ma_dich_vu
+join loai_dich_vu ldv on dv.ma_loai_dich_vu=ldv.ma_loai_dich_vu
+right join hop_dong_chi_tiet hdct on hd.ma_hop_dong=hdct.ma_hop_dong
+join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem
+group by hdct.ma_dich_vu_di_kem
+having count(hdct.ma_dich_vu_di_kem)=1
+order by hdct.ma_hop_dong;
 ----------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------
+-- task 15
+select nv.ma_nhan_vien,nv.ho_ten,td.trinh_do,bp.bo_phan,nv.so_dien_thoai,nv.dia_chi
+from nhan_vien nv
+join trinh_do td on nv.ma_trinh_do=td.ma_trinh_do
+join bo_phan bp on nv.ma_bo_phan=bp.ma_bo_phan
+join hop_dong hd on nv.ma_nhan_vien=hd.ma_nhan_vien
+group by nv.ma_nhan_vien
+having count(hd.ma_nhan_vien)<=3;
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
 drop table vi_tri;
