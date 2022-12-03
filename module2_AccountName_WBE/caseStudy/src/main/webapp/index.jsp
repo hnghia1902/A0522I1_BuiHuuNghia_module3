@@ -3,66 +3,76 @@
 <html>
 <head>
     <title>Main</title>
-    <style>
-        #header{
-            height: 100px;
+ <style>
+     body{
+         font-family: Arial, Tahoma;
+         font-size: 12px;
+     }
 
-        }
-        #menu{
+     #main{
+         width: 1000px;
+         padding: 0;
+         margin-left: auto;
+         margin-right: auto;
+     }
 
-            height: 30px;
-        }
-        #main_content{
+     #head{
+         height: 100px;
+         background-color: #F5F5F5;
+         border: 1px solid #CDCDCD;
+         margin-bottom:5px;
+     }
+     
+     #head-link{
+         height: 30px;
+         line-height: 30px;
+         padding-left: 10px;
+         padding-right: 10px;
+         border: 1px solid #CDCDCD;
+         background-color: #F5F5F5;
+         margin-bottom:5px;
+         clear: both;
+     }
 
-        }
-        #footer{
-            height: 150px;
-        }
+     #left{
+         width: 186px;
+         min-height: 400px;
+         border: 1px solid #CDCDCD;
+         float:left;
+         background-color: #004C00;
+         margin-bottom: 5px;
+     }
 
-        #left_sidebar{
-            float:left;
-            width: 300px;
-            height: 400px;
+     #content{
+         width: 800px;
+         min-height: 400px;
+         border: 1px solid #CDCDCD;
+         float:left;
+         margin-left: 5px;
+         margin-right: 5px;
+         margin-bottom: 5px;
+     }
 
-        }
-
-        #right_sidebar{
-            float:right;
-            width: 300px;
-            height: 400px;
-
-        }
-
-        #content{
-            margin-left: 300px;
-            margin-right: 300px;
-            height: 300px;
-
-        }
-    </style>
+     #footer{
+         height: 50px;
+         clear: both;
+         border: 1px solid #CDCDCD;
+         background-color: #F8F8FF;
+     }
+ </style>
 </head>
 <body>
-<div id="main_wrapper">
-    <div id="header">
-      header
+<div id="main">
+    <div id="head">
+
     </div>
-    <div id="menu">
-        Menu
+    <div id="head-link">
     </div>
-    <div id="main_content">
-        <div id="left_sidebar">
-            Left sidebar
-        </div>
-        <div id="right_sidebar">
-            Right sidebar
-        </div>
-        <div id="content">
-            Main Content
-        </div>
-        <div style="clear: both"></div>
+    <div id="left">
+    </div>
+    <div id="content">
     </div>
     <div id="footer">
-        Footer
     </div>
 </div>
 </body>

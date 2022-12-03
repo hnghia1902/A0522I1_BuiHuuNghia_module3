@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cbc428bf-2dc3-4a55-b031-f29237f794c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../module3_a0522i1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/case_study/case_study.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ss_06_css/bt1/nhung_css.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ss_06_css/bt2/dinh_dang_van_ban.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ss_06_css/bt2/my.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ss_06_css/bt3/mycss.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ss_06_css/bt3/trang_doc_truyen_ngan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ss_07/bai_tap_2/tao_giao_dien_fb.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ss_07/bai_tap_2/tao_giao_dien_fb.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2IGVzy0sJDib6KP3IdxXq02uN5O" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/nghia/codegym_",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cbc428bf-2dc3-4a55-b031-f29237f794c3" name="Changes" comment="" />
+      <created>1669808176057</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669808176057</updated>
+      <workItem from="1669808177894" duration="128000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
